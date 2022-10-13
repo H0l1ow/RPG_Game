@@ -11,17 +11,19 @@ void cursor(int x, int y)
 
 void intro(Player& p1, int& diff)
 {
-    system("cls");
-    cursor(20, 12);
-
     std::string nameX;
+    
+    system("cls");
 
+    whichScenarioPic(0);
+    cursor(20, 12);
     std::cout << "Welcome stranger! Please tell me your name: "; std::getline(std::cin, nameX);
         p1.setName(nameX);
         Sleep(1000);
     
     system("cls");
-    cursor(20, 12);
+    whichScenarioPic(1);
+    cursor(30, 12);
     std::cout << "Choose difficulty of the game: "; std::cin >> diff;
     if (diff > 10)
     {
@@ -34,11 +36,13 @@ void intro(Player& p1, int& diff)
 
     system("cls");
     Sleep(1000);
+    whichScenarioPic(2);
+    cursor(5, 10);
     std::cout << "Greetings " << p1.getName() << " and welcome to this dark world\n";
-    std::cout << "Your level is: " << p1.getLevel() << " and you have: " << p1.getEXP() << "/" << p1.getExpNeeded() << " exp" << "\n"; Sleep(2000);
+    std::cout << "\tYour level is: " << p1.getLevel() << " and you have: " << p1.getEXP() << "/" << p1.getExpNeeded() << " exp" << "\n"; Sleep(2000);
     for (int i = 5; i > 0; i--)
     {
-        cursor(20, 12);
+        cursor(20, 13);
         std::cout << "You will enter the map in: " << i;
         Sleep(1000);
     }

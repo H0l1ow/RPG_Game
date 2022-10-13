@@ -5,5 +5,6 @@
 
 void whichPicWep(int);
 void whichPicMob(int);
+void whichScenarioPic(int);
 
 #endif
