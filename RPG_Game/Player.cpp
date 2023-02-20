@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Player.hpp"
 
-Player::Player(std::string name, int level, int EXP)
+Player::Player(std::string name, int level, int EXP, int gold)
 {
     setName(name);
     setLevel(level);
@@ -12,6 +12,7 @@ Player::Player(std::string name, int level, int EXP)
     setMP(getMaxMP());
     setDamage();
     setExpNeeded();
+    setGold(gold);
 }
 
 
@@ -52,6 +53,10 @@ void Player::setExpNeeded()
 {
     ExpNeeded = 100 + ((getLevel() * getLevel()) * 10);
 }
+void Player::setGold(int pGold)
+{
+    playerGold = pGold;
+}
 
 // funkcje pobierania
 std::string Player::getName()
@@ -89,4 +94,8 @@ int Player::getEXP()
 int Player::getExpNeeded()
 {
     return ExpNeeded;
+}
+int Player::getGold()
+{
+    return playerGold;
 }

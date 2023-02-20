@@ -8,7 +8,7 @@ class Player
 {
 public:
     // funkcje ustawiania
-    Player(std::string = "none", int = 1, int = 0);
+    Player(std::string = "none", int = 1, int = 0, int = 100);
     void setName(std::string);
     void setLevel(int);
     void setMaxHealth();
@@ -18,6 +18,7 @@ public:
     void setDamage();
     void setEXP(int);
     void setExpNeeded();
+    void setGold(int);
 
     // funkcje pobierania
     std::string getName();
@@ -29,6 +30,7 @@ public:
     int getDamage(int);
     int getEXP();
     int getExpNeeded();
+    int getGold();
 
 private:
     std::string playerName;
@@ -40,7 +42,7 @@ private:
     int playerBaseDamage;
     int playerEXP;
     int ExpNeeded;
-
+    int playerGold;
 };
 
 #endif

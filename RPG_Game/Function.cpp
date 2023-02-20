@@ -14,10 +14,19 @@ void intro(Player& p1, int& diff)
     std::string nameX;
     
     system("cls");
-
     whichScenarioPic(0);
     cursor(20, 12);
     std::cout << "Welcome stranger! Please tell me your name: "; std::getline(std::cin, nameX);
+    while (nameX.size() > 15)
+    {
+        system("cls");
+        whichScenarioPic(0);
+        cursor(20, 12);
+        
+        std::cout << "Your name is too long, use 15 chars or less!\n";
+        cursor(30, 14);
+        std::cout << "Name: "; std::getline(std::cin, nameX);
+    }
         p1.setName(nameX);
         Sleep(1000);
     
@@ -27,11 +36,37 @@ void intro(Player& p1, int& diff)
     std::cout << "Choose difficulty of the game: "; std::cin >> diff;
     if (diff > 10)
     {
-        system("cls");
-        cursor(40, 12);
+        std::string odp;
+        int old_diff = diff;
+
         Sleep(1000);
-        std::cout << "You will die soon" << std::endl;
-        Sleep(2000);
+        system("cls");
+        whichScenarioPic(1);
+        cursor(30, 12);
+        std::cout << "Everything above 10 is deadly!";       
+        cursor(30, 13);
+        std::cout << "Are you sure? (T/N): "; std::cin >> odp;
+        if (odp == "N" || odp == "n")
+        {
+            Sleep(1000);
+            system("cls");
+            whichScenarioPic(1);
+            cursor(30, 12);
+            std::cout << "Choose new difficulty level! "; std::cin >> diff;
+            Sleep(1500);  cursor(30, 13);
+            if (diff > old_diff) { std::cout << "Ehhh...."; p1.setName("Douchebag"); }
+            else if (diff > 10 && diff < old_diff) { std::cout << "ohhh cool...."; p1.setName("Douchebag"); }
+            Sleep(1500);
+        }
+        if (diff > 10) {
+            system("cls");
+            whichScenarioPic(1);
+            cursor(40, 12);
+            Sleep(1000);
+            std::cout << "You will die soon" << std::endl;
+            Sleep(2000);
+        }
+        
     }
 
     system("cls");
@@ -97,7 +132,7 @@ void battle(Player& acc, int diff)
 
 void accStatsMap(Player& p1)
 {
-    std::cout << "\n\t\t\t\tLv. " << p1.getLevel() << "\t" << p1.getName() << "\tHP " << p1.getHealth() << "/" << p1.getMaxHealth() << "\tMP " << p1.getMP() << "/" << p1.getMaxMP() << "\tEXP " << p1.getEXP() << "/" << p1.getExpNeeded() << "\n";
+    std::cout << "\n\t\t\tLv. " << p1.getLevel() << "\t" << p1.getName() << "\tHP " << p1.getHealth() << "/" << p1.getMaxHealth() << "\tMP " << p1.getMP() << "/" << p1.getMaxMP() << "\tEXP " << p1.getEXP() << "/" << p1.getExpNeeded() << "\tMoney: " << p1.getGold() << "\n";
 }
 
 void event(Grid& gE, Player& pE, char& sayE, int diff)
